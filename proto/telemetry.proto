@@ -3,28 +3,56 @@ syntax = "proto3";
 package airmap.telemetry;
 
 message Position {
-    // Decimal place requirement: 7 decimal places.
-    double latitude = 1;
-
-    // Decimal place requirement: 7 decimal places.
-    double longitude = 2;
-
-    // Altitude is always in Meters
-    float altitude = 3;
 
     // Milliseconds since epoc UTC
-    uint64 timestamp = 4;
+    uint64 timestamp = 1;
+    
+    // Decimal place requirement: 7 decimal places.
+    double latitude = 2;
+
+    // Decimal place requirement: 7 decimal places.
+    double longitude = 3;
+
+    // Altitude is always in Meters MSL
+    float altitude_m_msl = 4;
+
+}
+
+message Attitude {
+
+    // Milliseconds since epoc UTC
+    uint64 timestamp = 1;
+
+    // The aircraft's yaw relative to true North.
+    float yaw = 2;
+    
+    // The aircrafts' pitch.
+    float pitch = 3;
+    
+    // The aircrafts roll.
+    float roll = 4;
+    
 }
 
 message Speed {
+
+    // Milliseconds since epoc UTC
+    uint64 timestamp = 1;
+
     // Ground speed in meters/second.
-    float ground_speed = 1;
+    float ground_speed_ms = 2;
 
     // Heading relative to True North
-    float true_heading = 2;
+    float true_heading = 3;
+    
 }
 
 message Barometer {
+
+    // Milliseconds since epoc UTC
+    uint64 timestamp = 1;
+
     // Barometric reading, hPa
-    float barometer = 1;
+    float barometer_hpa = 2;
+    
 }
